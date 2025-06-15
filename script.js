@@ -6,27 +6,23 @@ const next = document.getElementById('next');
 
 let current = 0;
 
-function updateCarousel(index) {
-    items.forEach((item, i) => {
-        item.classList.toggle('active', i === index);
-        indicators[i].classList.toggle('active', i === index);
-    });
-    number.innerText = `0${index + 1}`;
+function showSlide(index) {
+    items.forEach(item => item.classList.remove('active'));
+    indicators.forEach(ind => ind.classList.remove('active'));
+
+    items[index].classList.add('active');
+    indicators[index].classList.add('active');
+    number.innerText = '0' + (index + 1);
 }
 
 next.addEventListener('click', () => {
     current = (current + 1) % items.length;
-    updateCarousel(current);
+    showSlide(current);
 });
 
 prev.addEventListener('click', () => {
     current = (current - 1 + items.length) % items.length;
-    updateCarousel(current);
+    showSlide(current);
 });
 
-indicators.forEach((indicator, i) => {
-    indicator.addEventListener('click', () => {
-        current = i;
-        updateCarousel(current);
-    });
-});
+showSlide(current);

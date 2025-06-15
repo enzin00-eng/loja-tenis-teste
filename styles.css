@@ -3,132 +3,134 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    text-decoration: none;
 }
 
 body {
-    background: linear-gradient(135deg, #6a00ff, #9b00e8);
-    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #7303c0, #ec38bc, #fdeff9);
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
+    font-family: Arial, sans-serif;
     color: #fff;
     overflow-x: hidden;
 }
 
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 header {
     width: 100%;
-    padding: 20px 60px;
+    padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 999;
+    z-index: 100;
 }
 
-header img.logo {
-    width: 100px;
+header img {
+    width: 120px;
 }
 
 header nav ul {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 header nav ul li a {
     color: white;
-    text-decoration: none;
-    font-weight: 500;
+    font-size: 16px;
     transition: 0.3s;
 }
 
 header nav ul li a:hover {
-    color: #ffea00;
+    color: #ffe600;
 }
 
-main {
-    padding-top: 120px;
-}
-
-section.carrossel {
+/* Section principal */
+section {
     width: 100%;
-    min-height: 90vh;
-    position: relative;
+    height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .list {
-    position: relative;
-    width: 70%;
     display: flex;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 60%;
 }
 
 .item {
-    min-width: 100%;
-    display: none;
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    transition: opacity 0.5s;
+    gap: 60px;
 }
 
 .item.active {
-    display: flex;
+    opacity: 1;
 }
 
 .tenis-img img {
-    width: 350px;
-    transition: transform 0.5s;
+    width: 300px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .content {
-    max-width: 500px;
-}
-
-.content h2 {
-    font-size: 4rem;
-    margin-bottom: 20px;
+    max-width: 400px;
 }
 
 .content .tenis-information {
-    background-color: #aaff00;
-    color: #000;
-    display: inline-block;
+    background-color: chartreuse;
+    color: black;
     padding: 5px 15px;
     border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.content h2 {
+    font-size: 48px;
     margin-bottom: 10px;
-    font-weight: bold;
 }
 
 .content .description {
-    font-size: 1rem;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
 }
 
-button.information {
-    background-color: #aaff00;
+.content .information {
+    background-color: chartreuse;
     color: black;
-    border: none;
     padding: 10px 25px;
-    border-radius: 30px;
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-button.information:hover {
-    background-color: #d4ff4d;
+    font-weight: bold;
 }
 
 .arrows {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
-    padding: 0 60px;
+    width: 80%;
+    margin-top: 40px;
 }
 
 .arrows button {
@@ -139,65 +141,37 @@ button.information:hover {
 
 .arrows img {
     width: 40px;
-    transition: transform 0.3s;
 }
 
-.arrows button:hover img {
-    transform: scale(1.1);
-}
-
-.arrows button:nth-child(1) img {
+.arrows #prev img {
     transform: rotate(180deg);
 }
 
+/* Indicadores */
 .indicators {
-    position: absolute;
-    bottom: 40px;
-    text-align: center;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .indicators .number {
-    font-size: 2rem;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .indicators ul {
     display: flex;
-    justify-content: center;
     gap: 10px;
 }
 
 .indicators ul li {
     width: 30px;
     height: 5px;
-    background-color: white;
-    border-radius: 10px;
-    opacity: 0.5;
-    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
 }
 
 .indicators ul li.active {
-    opacity: 1;
-    background-color: #ffea00;
-}
-
-@media (max-width: 768px) {
-    .list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .tenis-img img {
-        width: 250px;
-    }
-
-    .content h2 {
-        font-size: 2.5rem;
-    }
+    background-color: yellow;
 }
