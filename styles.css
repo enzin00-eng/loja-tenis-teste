@@ -199,3 +199,7 @@ section {
     bottom: 10%;
   }
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
