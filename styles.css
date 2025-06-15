@@ -6,27 +6,27 @@
 }
 
 body {
-    background-color: #000;
+    background: linear-gradient(135deg, #6a00ff, #9b00e8);
+    font-family: 'Poppins', sans-serif;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
 header {
-    position: fixed;
-    top: 0;
     width: 100%;
-    height: 100px;
-    background: radial-gradient(circle at center, #7f3d9e, #6d00d9);
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 50px;
-    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
 
-header img {
-    width: 180px;
+header img.logo {
+    width: 100px;
 }
 
 header nav ul {
@@ -37,166 +37,167 @@ header nav ul {
 header nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     transition: 0.3s;
 }
 
 header nav ul li a:hover {
-    color: #beff1b;
+    color: #ffea00;
 }
 
-section {
-    background: radial-gradient(circle at center, #7f3d9e, #6d00d9);
-    height: 100vh;
-    padding: 150px 50px 50px;
+main {
+    padding-top: 120px;
+}
+
+section.carrossel {
+    width: 100%;
+    min-height: 90vh;
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .list {
-    width: 80vw;
-    height: 500px;
     position: relative;
+    width: 70%;
+    display: flex;
+    overflow: hidden;
 }
 
-.list .item {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s;
-    display: flex;
+.item {
+    min-width: 100%;
+    display: none;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    transition: opacity 0.5s;
 }
 
-.list .item.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.tenis-img {
-    flex: 1;
+.item.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .tenis-img img {
-    width: 500px;
-    transform: rotate(-15deg);
+    width: 350px;
+    transition: transform 0.5s;
 }
 
 .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-}
-
-.content .tenis-information {
-    background-color: #beff1b;
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
+    max-width: 500px;
 }
 
 .content h2 {
-    font-size: 6em;
-    line-height: 1em;
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.content .tenis-information {
+    background-color: #aaff00;
+    color: #000;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .content .description {
-    max-width: 400px;
-    font-size: 14px;
-    color: #d9d9d9;
-    text-align: right;
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
 }
 
-.information {
-    padding: 10px 25px;
-    background-color: #beff1b;
-    color: #000;
+button.information {
+    background-color: #aaff00;
+    color: black;
     border: none;
+    padding: 10px 25px;
     border-radius: 30px;
     cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
     transition: 0.3s;
 }
 
-.information:hover {
-    background-color: #fff;
+button.information:hover {
+    background-color: #d4ff4d;
 }
 
 .arrows {
     position: absolute;
-    top: 50%;
-    left: 0;
     width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 50px;
-    z-index: 5;
+    padding: 0 60px;
 }
 
 .arrows button {
     background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.arrows button:hover {
+.arrows img {
+    width: 40px;
+    transition: transform 0.3s;
+}
+
+.arrows button:hover img {
     transform: scale(1.1);
 }
 
-.arrows button img {
-    width: 60px;
-}
-
-/* Rotaciona apenas a seta da esquerda */
-.arrows button#prev img {
+.arrows button:nth-child(1) img {
     transform: rotate(180deg);
 }
 
-
 .indicators {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
+    text-align: center;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-direction: column;
 }
 
 .indicators .number {
-    font-size: 4em;
-    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .indicators ul {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
 .indicators ul li {
-    width: 50px;
+    width: 30px;
     height: 5px;
-    background-color: #d9d9d9;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.5;
     transition: 0.3s;
 }
 
 .indicators ul li.active {
-    background-color: #beff1b;
+    opacity: 1;
+    background-color: #ffea00;
+}
+
+@media (max-width: 768px) {
+    .list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tenis-img img {
+        width: 250px;
+    }
+
+    .content h2 {
+        font-size: 2.5rem;
+    }
 }

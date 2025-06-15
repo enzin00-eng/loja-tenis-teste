@@ -1,37 +1,32 @@
 const items = document.querySelectorAll('.item');
 const indicators = document.querySelectorAll('.indicators ul li');
 const number = document.querySelector('.number');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
 
 let current = 0;
 
-// Atualiza o carrossel
-function updateCarousel() {
-    items.forEach((item, index) => {
-        item.classList.remove('active');
-        indicators[index].classList.remove('active');
-        if (index === current) {
-            item.classList.add('active');
-            indicators[index].classList.add('active');
-        }
+function updateCarousel(index) {
+    items.forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+        indicators[i].classList.toggle('active', i === index);
     });
-    number.textContent = `0${current + 1}`;
+    number.innerText = `0${index + 1}`;
 }
 
-// Botões
-document.getElementById('next').addEventListener('click', () => {
+next.addEventListener('click', () => {
     current = (current + 1) % items.length;
-    updateCarousel();
+    updateCarousel(current);
 });
 
-document.getElementById('prev').addEventListener('click', () => {
+prev.addEventListener('click', () => {
     current = (current - 1 + items.length) % items.length;
-    updateCarousel();
+    updateCarousel(current);
 });
 
-// Indicadores (clicáveis se quiser)
-indicators.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        current = index;
-        updateCarousel();
+indicators.forEach((indicator, i) => {
+    indicator.addEventListener('click', () => {
+        current = i;
+        updateCarousel(current);
     });
 });
