@@ -175,3 +175,27 @@ section {
 .indicators ul li.active {
     background-color: yellow;
 }
+
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tenis-img img {
+    width: 80%;
+  }
+
+  .content h2 {
+    font-size: 2rem;
+  }
+
+  .content .description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .arrows {
+    bottom: 10%;
+  }
+}
